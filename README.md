@@ -196,7 +196,7 @@ Step 9: Access Application
 
 Retrieve external IP:
 
-`
+
 kubectl get svc frontend-service
 
 Open in browser:
@@ -212,15 +212,14 @@ kubectl apply -f .
 
 
 
-# Ingress (Recommended Instead of LoadBalancer)
+#Ingress (Recommended Instead of LoadBalancer)
 
 install NGINX Ingress:
 
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
 
 
-
- Scaling the Application
+Scaling the Application
 
 Scale frontend replicas:
 
