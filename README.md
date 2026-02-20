@@ -28,7 +28,7 @@ All services are deployed as Kubernetes Deployments and exposed via Services.
 
 AKS manages container orchestration, scaling, and networking.
 
-`
+```
 ├── frontend/
 │   ├── Dockerfile
 │   └── src/
@@ -62,7 +62,7 @@ AKS manages container orchestration, scaling, and networking.
 │   │       └── frontend-hpa.yaml
 │   │
 │   └── README.md
-`
+```
 
 
 🔧 Prerequisites
