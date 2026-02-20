@@ -28,6 +28,44 @@ All services are deployed as Kubernetes Deployments and exposed via Services.
 
 AKS manages container orchestration, scaling, and networking.
 
+``
+├── frontend/
+│   ├── Dockerfile
+│   └── src/
+│
+├── auth-service/
+│   ├── Dockerfile
+│   └── src/
+│
+├── product-service/
+│   ├── Dockerfile
+│   └── src/
+│
+├── k8s/
+│   ├── base/
+│   │   ├── namespace.yaml
+│   │   ├── mongo/
+│   │   │   ├── mongo-secret.yaml
+│   │   │   ├── mongo-pvc.yaml
+│   │   │   ├── mongo-deployment.yaml
+│   │   │   └── mongo-service.yaml
+│   │   │
+│   │   ├── backend/
+│   │   │   ├── auth-deployment.yaml
+│   │   │   ├── auth-service.yaml
+│   │   │   ├── product-deployment.yaml
+│   │   │   └── product-service.yaml
+│   │   │
+│   │   └── frontend/
+│   │       ├── frontend-deployment.yaml
+│   │       ├── frontend-service.yaml
+│   │       └── frontend-hpa.yaml
+│   │
+│   └── README.md
+
+``
+
+
 🔧 Prerequisites
 
 Ensure the following tools are installed:
