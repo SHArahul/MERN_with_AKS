@@ -29,7 +29,6 @@ All services are deployed as Kubernetes Deployments and exposed via Services.
 AKS manages container orchestration, scaling, and networking.
 
 `
-
 ├── frontend/
 │   ├── Dockerfile
 │   └── src/
@@ -63,7 +62,6 @@ AKS manages container orchestration, scaling, and networking.
 │   │       └── frontend-hpa.yaml
 │   │
 │   └── README.md
-
 `
 
 
@@ -85,6 +83,7 @@ Azure Subscription
 
 `
 git clone https://github.com/UnpredictablePrashant/SampleMERNwithMicroservices.git
+
 cd SampleMERNwithMicroservices
 `
 
