@@ -205,6 +205,12 @@ http://<EXTERNAL-IP>
 `
 
 
+`
+🚀 Deploy Everything
+kubectl apply -f namespace.yaml
+kubectl apply -f .
+
+`
 
 📊 Scaling the Application
 
