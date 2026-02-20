@@ -202,8 +202,6 @@ kubectl get svc frontend-service
 Open in browser:
 
 http://<EXTERNAL-IP>
-`
-
 
 `
 🚀 Deploy Everything
@@ -212,7 +210,17 @@ kubectl apply -f .
 
 `
 
-📊 Scaling the Application
+
+
+# Ingress (Recommended Instead of LoadBalancer)
+
+install NGINX Ingress:
+
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/main/deploy/static/provider/cloud/deploy.yaml
+
+
+
+ Scaling the Application
 
 Scale frontend replicas:
 
