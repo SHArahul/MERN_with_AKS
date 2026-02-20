@@ -42,46 +42,59 @@ Git
 
 Azure Subscription
 
-Step 1: Clone the Repository
+#Step 1: Clone the Repository
+
+`
 git clone https://github.com/UnpredictablePrashant/SampleMERNwithMicroservices.git
 cd SampleMERNwithMicroservices
+`
 
-📸 Screenshot: Repository cloned successfully
 
 Step 2: Create Azure Resource Group
-az group create --name mern-aks-rg --location eastus
 
-📸 Screenshot: Resource group created in Azure Portal
+`
+az group create --name mern-aks-rg --location eastus
+`
+
 
 Step 3: Create Azure Container Registry (ACR)
+
+`
 az acr create --resource-group mern-aks-rg \
               --name mernacr12345 \
               --sku Basic
 
+`
+
 Enable admin access:
 
+`
 az acr update -n mernacr12345 --admin-enabled true
+`
 
-📸 Screenshot: ACR created successfully
 
 Step 4: Build and Push Docker Images
 
 Login to ACR:
 
+`
 az acr login --name mernacr12345
 Build Frontend Image
 docker build -t mernacr12345.azurecr.io/frontend:latest ./frontend
 docker push mernacr12345.azurecr.io/frontend:latest
 Build Backend Services
+`
 
 Repeat for each microservice:
 
+`
 docker build -t mernacr12345.azurecr.io/service1:latest ./service1
 docker push mernacr12345.azurecr.io/service1:latest
+`
 
-📸 Screenshot: Images visible inside ACR repositories
 
 Step 5: Create AKS Cluster
+`
 az aks create \
   --resource-group mern-aks-rg \
   --name mern-aks-cluster \
@@ -89,19 +102,23 @@ az aks create \
   --enable-addons monitoring \
   --generate-ssh-keys \
   --attach-acr mernacr12345
-
-📸 Screenshot: AKS cluster creation successful
+`
 
 Step 6: Connect to AKS
+
+`
 az aks get-credentials \
   --resource-group mern-aks-rg \
   --name mern-aks-cluster
+`
 
 Verify connection:
 
+`
 kubectl get nodes
 
-📸 Screenshot: Nodes in Ready state
+`
+
 
 Step 7: Create Kubernetes Manifests
 
@@ -119,6 +136,7 @@ frontend-deployment.yaml
 
 frontend-service.yaml
 
+`
 Example: MongoDB Deployment
 apiVersion: apps/v1
 kind: Deployment
@@ -162,7 +180,10 @@ spec:
   ports:
     - port: 80
       targetPort: 3000
+`
+      
 Step 8: Deploy to AKS
+
 kubectl apply -f .
 
 Verify deployments:
@@ -170,20 +191,20 @@ Verify deployments:
 kubectl get pods
 kubectl get services
 
-📸 Screenshot: All pods running
-📸 Screenshot: External IP assigned
 
 Step 9: Access Application
 
 Retrieve external IP:
 
+`
 kubectl get svc frontend-service
 
 Open in browser:
 
 http://<EXTERNAL-IP>
+`
 
-📸 Screenshot: Application running successfully
+
 
 📊 Scaling the Application
 
@@ -203,8 +224,11 @@ kubectl logs <pod-name>
 Describe pod:
 
 kubectl describe pod <pod-name>
+
 🧹 Cleanup Resources
+
 az group delete --name mern-aks-rg --yes --no-wait
+
 🎯 Outcome
 
 Successfully deployed MERN microservices on AKS
